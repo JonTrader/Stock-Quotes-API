@@ -1,11 +1,14 @@
 import React from 'react';
 
+
 export default class Stocks extends React.Component {
     constructor(props) {
         super(props);
         this.textInput = React.createRef();
         this.state =
         {
+            stockChartXValues: [],
+            stockCartYValues: [],
             stockSymbol: 'SPY',
             price: ''
         }
@@ -24,7 +27,10 @@ export default class Stocks extends React.Component {
 
     fetchStock()
     {
+        const pointerToThis = this;
         let API_CALL = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${this.state.stockSymbol}&apikey=HC59HK11T8SB44OT`;
+        let stockCartXValuesFunction = [];
+        let stockCartYValuesFunction = [];
 
         fetch(API_CALL)
             .then
@@ -39,6 +45,17 @@ export default class Stocks extends React.Component {
                 function(data)
                 {
                     console.log(data);
+
+                    for(var key in data['Time Series (Daily)'])
+                    {
+                        stockCartXValuesFunction.push(key);
+                        stockCartYValuesFunction.push(data['Time Series (Daily)'][key]['1. open']);
+                    }
+
+                    pointerToThis.setState({
+                        stockChartXValues: stockCartXValuesFunction,
+                        stockCartYValues: stockCartYValuesFunction
+                    })
                 }
             )
     }
