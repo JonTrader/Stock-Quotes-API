@@ -8,7 +8,13 @@ export default class Home extends React.Component {
         this.textInput = React.createRef();
         this.state =
         {
-            price: ''
+
+            price: '',
+            high: '',
+            low: '',
+            volume: '',
+            prevClose: '',
+            changePercent: ''
         }
     }
 
@@ -19,14 +25,15 @@ export default class Home extends React.Component {
 
     fetchStock(ticker)
     {
-        var price;
-        var high= '';
-        var low = '';
-        var volume = '';
-        var prevClose = '';
-        var changePercent = '';
+        var priceFunction;
+        var highFunction= '';
+        var lowFunction = '';
+        var volumeFunction = '';
+        var prevCloseFunction = '';
+        var changePercentFunction = '';
 
         let API_CALL = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=AMD&apikey=HC59HK11T8SB44OT`
+        const pointerToThis = this;
 
         fetch(API_CALL)
             .then
@@ -41,12 +48,21 @@ export default class Home extends React.Component {
                 function(data)
                 {
                     console.log(data);
-                    price = (data["Global Quote"]["05. price"]);
-                    high = (data["Global Quote"]["03. high"])
-                    low = (data["Global Quote"]["04. low"])
-                    volume = (data["Global Quote"]["06. volume"])
-                    prevClose = (data["Global Quote"]["08. previous close"])
-                    changePercent = (data["Global Quote"]["10. change percent"])
+                    priceFunction = (data["Global Quote"]["05. price"]);
+                    highFunction = (data["Global Quote"]["03. high"])
+                    lowFunction = (data["Global Quote"]["04. low"])
+                    volumeFunction = (data["Global Quote"]["06. volume"])
+                    prevCloseFunction = (data["Global Quote"]["08. previous close"])
+                    changePercentFunction = (data["Global Quote"]["10. change percent"])
+
+                    pointerToThis.setState({
+                        price: priceFunction,
+                        high: highFunction,
+                        low: lowFunction,
+                        volume: volumeFunction,
+                        prevClose: prevCloseFunction,
+                        changePercent: changePercentFunction
+                    })
                 }
                 
             )
@@ -61,6 +77,12 @@ export default class Home extends React.Component {
         return(
             <div>
                 <h2>Hello</h2>
+                <p>{this.state.price}</p>
+                <p>{this.state.high}</p>
+                <p>{this.state.low}</p>
+                <p>{this.state.volume}</p>
+                <p>{this.state.prevClose}</p>
+                <p>{this.state.changePercent}</p>
             </div>
             
         );
