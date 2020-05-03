@@ -10,15 +10,15 @@ export default class NavigationBar extends React.Component {
         return(
 
             <Navbar expand="lg" variant="dark" bg="dark">
-                <Navbar.Brand href="/home" className="ml-5">
+                <Navbar.Brand href="/" className="ml-5">
                     <h3>Stock Quotes</h3>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" className="lines" />
 
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ml-auto mr-5">
-                        <a className="mr-5">Quotes</a>
-                        <a>Charts</a>
+                        <h4 className="mr-5">Quotes</h4>
+                        <h4>Charts</h4>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
