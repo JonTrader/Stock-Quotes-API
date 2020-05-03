@@ -3,11 +3,18 @@ import React from 'react';
 export default class Stocks extends React.Component {
     constructor(props) {
         super(props);
+        this.textInput = React.createRef();
         this.state =
         {
             stockSymbol: 'SPY'
         }
     }
+
+    handleSubmit = e =>
+    {
+        e.preventDefault();
+        this.setState({ stockSymbol: this.textInput.current.value})
+    };
 
     componentDidMount()
     {
@@ -27,10 +34,9 @@ export default class Stocks extends React.Component {
     {
         return (
             <div>
-
                 <h1>Ticker: {this.state.stockSymbol} </h1>
-                <input type="text" />
-                <button>Change Ticker</button>
+                <input type="text" ref={this.textInput}/>
+                <button onClick={this.handleSubmit}>Change Ticker</button>
                 
             </div>
         );
