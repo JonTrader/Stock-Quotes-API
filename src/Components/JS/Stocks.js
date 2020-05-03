@@ -1,4 +1,5 @@
 import React from 'react';
+import '../CSS/Stocks.css';
 import createPlotlyComponent from 'react-plotly.js/factory';
 
 
@@ -61,6 +62,7 @@ export default class Stocks extends React.Component {
                     })
                 }
             )
+
     }
 
     render()
@@ -71,7 +73,8 @@ export default class Stocks extends React.Component {
 
         return (
             <div>
-                <h1>Ticker: {ticker} </h1>
+
+                <h3>Ticker: {ticker} </h3>
                 
                 <input type="text" ref={this.textInput}/>
                 <button onClick={this.handleSubmit}>Change Ticker</button>
@@ -86,11 +89,11 @@ export default class Stocks extends React.Component {
                             x: this.state.stockChartXValues,
                             y: this.state.stockCartYValues,
                             type: 'scatter',
-                            mode: 'lines+markers',
-                            marker: {color: 'red'},
+                            mode: 'lines',
+                            marker: {color: 'green'},
                         },
                     ]}
-                    layout={ {width: 1200, height: 500 } }
+                    layout={ {width: 800, height: 500 } }
                 />
             </div>
         );

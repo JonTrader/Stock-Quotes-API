@@ -1,7 +1,7 @@
 import React from 'react';
-import './App.css';
-import NavigationBar from './NavigationBar.js'
-import Stocks from './Stocks.js'
+import NavigationBar from './Components/JS/NavigationBar.js'
+import Stocks from './Components/JS/Stocks.js'
+import Home from './Components/JS/Home.js';
 
 function App() {
   return (

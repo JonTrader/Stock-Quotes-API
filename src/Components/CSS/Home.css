@@ -1,0 +1,11 @@
+body
+{
+    background-color: rgb(175, 175, 175);
+}
+
+.jumbotron
+{
+    background: url("../stock.jpg") center center / cover no-repeat;
+    padding: 7rem 2rem;
+    border-radius: 0px;
+}

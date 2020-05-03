@@ -1,4 +1,5 @@
 import React from 'react';
+import '../CSS/NavigationBar.css';
 import Nav from 'react-bootstrap/Navbar'
 import Navbar from 'react-bootstrap/Navbar'
 
@@ -9,7 +10,7 @@ export default class NavigationBar extends React.Component {
     {
         return(
 
-            <Navbar expand="lg" variant="dark" bg="dark">
+            <Navbar expand="lg" className="navcolor">
                 <Navbar.Brand href="/" className="ml-5">
                     <h3>Stock Quotes</h3>
                 </Navbar.Brand>
