@@ -3,6 +3,8 @@ import '../CSS/NavigationBar.css';
 import logo from '../up-arrow.png'
 import Nav from 'react-bootstrap/Navbar'
 import Navbar from 'react-bootstrap/Navbar'
+import Container from 'react-bootstrap/Container'
+import { Link } from "react-router-dom";
 
 
 export default class NavigationBar extends React.Component {
@@ -11,17 +13,14 @@ export default class NavigationBar extends React.Component {
     {
         return(
 
-            <Navbar expand="lg" className="navcolor">
-                    <img src={logo} alt="" className="arrowLogo ml-5"/>
-                    <h3 className="ml-2">Stock Quotes</h3>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" className="lines" />
+            <Navbar expand="md" className="navbgcolor" sticky="top">
+                <Container>
 
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="ml-auto mr-5">
-                        <h4 className="mr-5">Quotes</h4>
-                        <h4>Charts</h4>
-                    </Nav>
-                </Navbar.Collapse>
+                    <Navbar.Brand href="/">
+                    <img src={logo} alt="" width="50px"/>
+                    </Navbar.Brand>
+                </Container>
+
             </Navbar>
             
         );

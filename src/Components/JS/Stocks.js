@@ -1,6 +1,7 @@
 import React from 'react';
 import '../CSS/Stocks.css';
 import createPlotlyComponent from 'react-plotly.js/factory';
+import NavigationBar from './NavigationBar';
 
 
 
@@ -12,22 +13,17 @@ export default class Stocks extends React.Component {
         {
             stockChartXValues: [],
             stockCartYValues: [],
-            stockSymbol: 'SPY',
-            price: ''
+            stockSymbol: ''
         }
     }
 
     handleSubmit = e =>
     {
-        e.preventDefault();
         this.setState({ stockSymbol: this.textInput.current.value})
-        this.componentDidMount();
+        this.fetchStock();
     };
 
-    componentDidMount()
-    {
-        this.fetchStock();
-    }
+
 
     fetchStock()
     {
@@ -62,19 +58,17 @@ export default class Stocks extends React.Component {
                     })
                 }
             )
-
     }
 
     render()
     {
         const Plotly = window.Plotly;
         const Plot = createPlotlyComponent(Plotly);
-        var ticker = this.state.stockSymbol;
 
         return (
             <div>
-
-                <h3>Ticker: {ticker} </h3>
+                <NavigationBar />
+                <h3>Ticker: {this.state.stockSymbol} </h3>
                 
                 <input type="text" ref={this.textInput}/>
                 <button onClick={this.handleSubmit}>Change Ticker</button>

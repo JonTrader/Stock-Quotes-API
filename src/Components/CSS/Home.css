@@ -6,6 +6,11 @@ body
 .jumbotron
 {
     background: url("../stock.jpg") center center / cover no-repeat;
-    padding: 7rem 2rem;
+    height: 400px;
     border-radius: 0px;
+}
+
+.bgcol
+{
+    background-color: black;
 }
