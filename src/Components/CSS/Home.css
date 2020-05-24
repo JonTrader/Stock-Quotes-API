@@ -1,6 +1,11 @@
+*
+{
+    font-family: 'Caladea', serif;
+}
+
 body
 {
-    background-color: rgb(0, 40, 59);
+    background-color: rgb(0, 40, 60);
 }
 
 .jumbotron
@@ -10,19 +15,27 @@ body
     border-radius: 0px;
 }
 
-ul > h4
+.lh
 {
-    color: rgb(255, 255, 255);
+    color: white;
+    font-size: 1.85rem;
 }
 
 h2
 {
-    font-size: 2.25rem;
+    font-size: 2.50rem;
     color: rgb(200, 200, 50);
 }
 
 li
 {
+    font-size: 1.1rem;
     list-style: square;
     color: white;
+}
+
+span
+{
+    text-transform: uppercase;
+    color: rgb(200, 200, 50);
 }

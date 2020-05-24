@@ -2,6 +2,9 @@ import React from 'react';
 import '../CSS/Stocks.css';
 import createPlotlyComponent from 'react-plotly.js/factory';
 import NavigationBar from './NavigationBar';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 
 
@@ -73,30 +76,38 @@ export default class Stocks extends React.Component {
         return (
             <div>
                 <NavigationBar />
-                
-                <form onSubmit={this.handleSubmit}>
-                    <h3>Ticker: {this.state.ticker} </h3>
-                    <input type="text" ref={this.textInput}/>
-                    <input type="submit" value="Change Ticker" />
-                </form>
-                <p>{this.state.price}</p>
-                <br/>
-                <br/>
-                <br/>
+                <Container>
+                    <Row className="justify-content-around mtCustom">
+                        <form onSubmit={this.handleSubmit}>
+                            <input type="text" ref={this.textInput}/>
+                            <input type="submit" value="Change Ticker" />
+                        </form>
+                    </Row>
 
-                <Plot
-                    data=
-                    {[
-                        {
-                            x: this.state.stockChartXValues,
-                            y: this.state.stockCartYValues,
-                            type: 'scatter',
-                            mode: 'lines',
-                            marker: {color: 'green'},
-                        },
-                    ]}
-                    layout={ {width: 800, height: 500 } }
-                />
+                    <br/>
+                    <br/>
+                    <br/>
+                    
+                    <Row className="justify-content-center">
+                        <h3>Ticker: <span> {this.state.ticker}</span></h3>
+                    </Row>
+
+                    <Row className="justify-content-center">
+                        <Plot
+                            data=
+                            {[
+                                {
+                                    x: this.state.stockChartXValues,
+                                    y: this.state.stockCartYValues,
+                                    type: 'scatter',
+                                    mode: 'lines',
+                                    marker: {color: 'blue'},
+                                },
+                            ]}
+                            layout={ {width: 800, height: 500 } }
+                        />
+                    </Row>
+                </Container>
             </div>
         );
 

@@ -121,7 +121,7 @@ export default class Home extends React.Component {
                 <Jumbotron>
                 </Jumbotron>
 
-                <Container className="bgcoll">
+                <Container>
                     <Row className="justify-content-center">
                         <h2>Performance By Sector</h2>
                     </Row>
@@ -131,28 +131,28 @@ export default class Home extends React.Component {
 
                     <Row className="justify-content-around">
                         <Col s md="4">
+                            <h5 className="lh">3 Month Performance</h5>
                             <ul>
-                                <h4>3 Month Performance</h4>
-                                <li>Energy: {this.state.energy}</li>
-                                <li>Information Technology: {this.state.info_tech}</li>
-                                <li>Health Care: {this.state.health_care}</li>
-                                <li>Real Estate: {this.state.real_estate}</li>
-                                <li>Finance: {this.state.finance}</li>
-                                <li>Industrials: {this.state.industrials}</li>
-                                <li>Communication Services: {this.state.com_services}</li>
+                                <li>Energy: <span>{this.state.energy}</span></li>
+                                <li>Information Technology: <span>{this.state.info_tech}</span></li>
+                                <li>Health Care: <span>{this.state.health_care}</span></li>
+                                <li>Real Estate: <span>{this.state.real_estate}</span></li>
+                                <li>Finance: <span>{this.state.finance}</span></li>
+                                <li>Industrials: <span>{this.state.industrials}</span></li>
+                                <li>Communication Services: <span>{this.state.com_services}</span></li>
                             </ul>
                         </Col>
 
                         <Col s md="4">
+                            <h5 className="lh">1 Year Performance</h5>
                             <ul>
-                                <h4>1 Year Performance</h4>
-                                <li>Energy: {this.state.Yenergy}</li>
-                                <li>Information Technology: {this.state.Yinfo_tech}</li>
-                                <li>Health Care: {this.state.Yhealth_care}</li>
-                                <li>Real Estate: {this.state.Yreal_estate}</li>
-                                <li>Finance: {this.state.Yfinance}</li>
-                                <li>Industrials: {this.state.Yindustrials}</li>
-                                <li>Communication Services: {this.state.Ycom_services}</li>
+                                <li>Energy: <span>{this.state.Yenergy}</span></li>
+                                <li>Information Technology: <span>{this.state.Yinfo_tech}</span></li>
+                                <li>Health Care: <span>{this.state.Yhealth_care}</span></li>
+                                <li>Real Estate: <span>{this.state.Yreal_estate}</span></li>
+                                <li>Finance: <span>{this.state.Yfinance}</span></li>
+                                <li>Industrials: <span>{this.state.Yindustrials}</span></li>
+                                <li>Communication Services: <span>{this.state.Ycom_services}</span></li>
                             </ul>
                         </Col>
                     </Row>
