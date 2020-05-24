@@ -1,6 +1,6 @@
 import React from 'react';
 import '../CSS/Stocks.css';
-// import createPlotlyComponent from 'react-plotly.js/factory';
+import createPlotlyComponent from 'react-plotly.js/factory';
 import NavigationBar from './NavigationBar';
 
 
@@ -23,18 +23,19 @@ export default class Stocks extends React.Component {
     handleSubmit = e =>
     {
         e.preventDefault();
-        this.setState({ ticker: this.textInput.current.value})
-        this.fetchStock();
+        this.setState({ ticker: this.textInput.current.value});
     };
 
-    fetchStock = () =>
+    componentDidUpdate(prevProps, prevState, snapshot)
     {
-        // const pointerToThis = this;
-        // let stockCartXValuesFunction = [];
-        // let stockCartYValuesFunction = [];
-        // var priceFunction = '';
+        const pointerToThis = this;
+        let stockCartXValuesFunction = [];
+        let stockCartYValuesFunction = [];
 
-        fetch(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=SPY&apikey=HC59HK11T8SB44OT`)
+        if(this.state.ticker !== prevState.ticker)
+        {
+            
+            fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${this.state.ticker}&apikey=HC59HK11T8SB44OT`)
             .then
             (
                 function(response)
@@ -47,27 +48,27 @@ export default class Stocks extends React.Component {
                 function(data)
                 {
                     console.log(data);
-                    // priceFunction = (data["Global Quote"]["05. price"])
 
-                    // for(var key in data['Time Series (Daily)'])
-                    // {
-                    //     // stockCartXValuesFunction.push(key);
-                    //     // stockCartYValuesFunction.push(data['Time Series (Daily)'][key]['1. open']);
-                    // }
+                    for(var key in data['Time Series (Daily)'])
+                    {
+                        stockCartXValuesFunction.push(key);
+                        stockCartYValuesFunction.push(data['Time Series (Daily)'][key]['1. open']);
+                    }
 
-                    // pointerToThis.setState({
-                    //     // stockChartXValues: stockCartXValuesFunction,
-                    //     // stockCartYValues: stockCartYValuesFunction
-                    //     price: priceFunction
-                    // })
+                    pointerToThis.setState({
+                        stockChartXValues: stockCartXValuesFunction,
+                        stockCartYValues: stockCartYValuesFunction
+                    })
                 }
             )
-    }
+        }
+     }
+        
 
     render()
     {
-        // const Plotly = window.Plotly;
-        // const Plot = createPlotlyComponent(Plotly);
+        const Plotly = window.Plotly;
+        const Plot = createPlotlyComponent(Plotly);
 
         return (
             <div>
@@ -83,7 +84,7 @@ export default class Stocks extends React.Component {
                 <br/>
                 <br/>
 
-                {/* <Plot
+                <Plot
                     data=
                     {[
                         {
@@ -95,7 +96,7 @@ export default class Stocks extends React.Component {
                         },
                     ]}
                     layout={ {width: 800, height: 500 } }
-                /> */}
+                />
             </div>
         );
 
