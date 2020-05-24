@@ -52,7 +52,7 @@ export default class Stocks extends React.Component {
                 {
                     console.log(data);
 
-                    if (data.Note === undefined)
+                    if (data.Note === undefined && data["Error Message"] === undefined)
                     {
 
                         for(var key in data['Time Series (Daily)'])
@@ -63,7 +63,14 @@ export default class Stocks extends React.Component {
 
                         pointerToThis.setState({
                             stockChartXValues: stockCartXValuesFunction,
-                            stockCartYValues: stockCartYValuesFunction
+                            stockCartYValues: stockCartYValuesFunction,
+                            error: ""
+                        })
+                    }
+                    else if (data["Error Message"] !== undefined)
+                    {
+                        pointerToThis.setState({
+                            error: "Invalid Symbol"
                         })
                     }
                     else
@@ -120,7 +127,7 @@ export default class Stocks extends React.Component {
                                     line: {color: 'rgb(0, 60, 80)'},
                                 },
                             ]}
-                            layout={ {width: 900, height: 500 } }
+                            layout={ {width: 900, height: 500, title: '100 Day/Daily Chart' } }
                         />
                     </Row>
 
