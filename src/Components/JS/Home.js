@@ -13,6 +13,7 @@ export default class Home extends React.Component {
         this.textInput = React.createRef();
         this.state =
         {
+            error: "",
             energy: '',
             info_tech: '',
             health_care: '',
@@ -71,42 +72,54 @@ export default class Home extends React.Component {
             (
                 function(data)
                 {
+                    
                     console.log(data);
-                    energyF = (data["Rank E: 3 Month Performance"].Energy);
-                    info_techF = (data["Rank E: 3 Month Performance"]["Information Technology"])
-                    health_careF = (data["Rank E: 3 Month Performance"]["Health Care"])
-                    real_estateF = (data["Rank E: 3 Month Performance"]["Real Estate"])
-                    financeF = (data["Rank E: 3 Month Performance"].Financials)
-                    industrialsF = (data["Rank E: 3 Month Performance"].Industrials)
-                    com_servicesF = (data["Rank E: 3 Month Performance"]["Communication Services"])
 
-                    YenergyF = (data["Rank G: 1 Year Performance"].Energy);
-                    Yinfo_techF = (data["Rank G: 1 Year Performance"]["Information Technology"])
-                    Yhealth_careF = (data["Rank G: 1 Year Performance"]["Health Care"])
-                    Yreal_estateF = (data["Rank G: 1 Year Performance"]["Real Estate"])
-                    YfinanceF = (data["Rank G: 1 Year Performance"].Financials)
-                    YindustrialsF = (data["Rank G: 1 Year Performance"].Industrials)
-                    Ycom_servicesF = (data["Rank G: 1 Year Performance"]["Communication Services"])
+                    if (data.Note === undefined)
+                    {
 
-                    pointerToThis.setState({
-                        
-                        energy: energyF,
-                        info_tech: info_techF,
-                        health_care: health_careF,
-                        real_estate: real_estateF,
-                        finance: financeF,
-                        industrials: industrialsF,
-                        com_services: com_servicesF,
-     
-                        Yenergy: YenergyF,
-                        Yinfo_tech: Yinfo_techF,
-                        Yhealth_care: Yhealth_careF,
-                        Yreal_estate: Yreal_estateF,
-                        Yfinance: YfinanceF,
-                        Yindustrials: YindustrialsF,
-                        Ycom_services: Ycom_servicesF
+                        energyF = (data["Rank E: 3 Month Performance"].Energy);
+                        info_techF = (data["Rank E: 3 Month Performance"]["Information Technology"])
+                        health_careF = (data["Rank E: 3 Month Performance"]["Health Care"])
+                        real_estateF = (data["Rank E: 3 Month Performance"]["Real Estate"])
+                        financeF = (data["Rank E: 3 Month Performance"].Financials)
+                        industrialsF = (data["Rank E: 3 Month Performance"].Industrials)
+                        com_servicesF = (data["Rank E: 3 Month Performance"]["Communication Services"])
 
-                    })
+                        YenergyF = (data["Rank G: 1 Year Performance"].Energy);
+                        Yinfo_techF = (data["Rank G: 1 Year Performance"]["Information Technology"])
+                        Yhealth_careF = (data["Rank G: 1 Year Performance"]["Health Care"])
+                        Yreal_estateF = (data["Rank G: 1 Year Performance"]["Real Estate"])
+                        YfinanceF = (data["Rank G: 1 Year Performance"].Financials)
+                        YindustrialsF = (data["Rank G: 1 Year Performance"].Industrials)
+                        Ycom_servicesF = (data["Rank G: 1 Year Performance"]["Communication Services"])
+
+                        pointerToThis.setState({
+                            
+                            energy: energyF,
+                            info_tech: info_techF,
+                            health_care: health_careF,
+                            real_estate: real_estateF,
+                            finance: financeF,
+                            industrials: industrialsF,
+                            com_services: com_servicesF,
+        
+                            Yenergy: YenergyF,
+                            Yinfo_tech: Yinfo_techF,
+                            Yhealth_care: Yhealth_careF,
+                            Yreal_estate: Yreal_estateF,
+                            Yfinance: YfinanceF,
+                            Yindustrials: YindustrialsF,
+                            Ycom_services: Ycom_servicesF
+
+                        })
+                    }
+                    else
+                    {
+                        pointerToThis.setState({
+                            error: "Please be patient. API will be back up. Refresh in 1 minute. Thank You!"
+                        })
+                    }
                 }
             ) 
     }
@@ -155,6 +168,12 @@ export default class Home extends React.Component {
                                 <li>Communication Services: <span>{this.state.Ycom_services}</span></li>
                             </ul>
                         </Col>
+                    </Row>
+
+                    <br />
+
+                    <Row className="justify-content-center">
+                        <p>{this.state.error}</p>
                     </Row>
                 </Container>
 

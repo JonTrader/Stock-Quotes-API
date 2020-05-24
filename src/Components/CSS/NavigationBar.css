@@ -1,11 +1,16 @@
 .navbgcolor
 {
-    background-color: rgb(225, 225, 225);
+    background-color: rgb(200, 200, 200);
 }
 
 .navbar-light .navbar-nav .nav-link
 {
     color: rgb(0, 30, 60);
-    font-size: 1.40rem;
-    font-weight: 600;
+    font-size: 1.50rem;
+    font-weight: 700;
+}
+
+.navbar-light .navbar-nav .nav-link:hover
+{
+
 }
