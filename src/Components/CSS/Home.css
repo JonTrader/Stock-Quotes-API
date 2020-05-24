@@ -1,0 +1,47 @@
+*
+{
+    font-family: 'Caladea', serif;
+}
+
+body
+{
+    background-color: rgb(0, 40, 60);
+}
+
+.jumbotron
+{
+    background: url("../stock.jpg") center center / cover no-repeat;
+    height: 400px;
+    border-radius: 0px;
+}
+
+.lh
+{
+    color: white;
+    font-size: 1.85rem;
+}
+
+h2
+{
+    font-size: 2.50rem;
+    color: rgb(200, 200, 50);
+}
+
+li
+{
+    font-size: 1.1rem;
+    list-style: square;
+    color: white;
+}
+
+span
+{
+    text-transform: uppercase;
+    color: rgb(200, 200, 50);
+}
+
+p
+{
+    font-size: 1.25rem;
+    color: red;
+}

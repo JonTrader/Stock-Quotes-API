@@ -1,0 +1,31 @@
+.mtCustom
+{
+    margin-top: 5rem;
+}
+
+h3
+{
+    font-size: 2rem;
+    color: white;
+}
+
+input
+{
+    margin: auto .75rem;
+}
+
+.changeBtn
+{
+    font-size: 1.25rem;
+    width: 6rem;
+    font-weight: 700;
+    color: white;
+    background-color: inherit;
+    border: 2px solid yellow;
+    border-radius: 7px;
+}
+
+h1
+{
+    color: white;
+}
