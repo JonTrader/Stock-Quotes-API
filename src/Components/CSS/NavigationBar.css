@@ -1,10 +1,11 @@
 .navbgcolor
 {
-    background-color: rgb(199, 199, 199);
+    background-color: rgb(200, 200, 200);
 }
 
-.navbar-light .navbar-brand
+.navbar-light .navbar-nav .nav-link
 {
-    font-size: 1.30rem;
-    color: rgb(0, 0, 0);
+    color: rgb(0, 30, 60);
+    font-size: 1.40rem;
+    font-weight: 600;
 }

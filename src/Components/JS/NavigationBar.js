@@ -1,10 +1,9 @@
 import React from 'react';
 import '../CSS/NavigationBar.css';
 import logo from '../up-arrow.png'
-import Nav from 'react-bootstrap/Navbar'
 import Navbar from 'react-bootstrap/Navbar'
+import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
-import { Link } from "react-router-dom";
 
 
 export default class NavigationBar extends React.Component {
@@ -17,8 +16,14 @@ export default class NavigationBar extends React.Component {
                 <Container>
 
                     <Navbar.Brand href="/">
-                    <img src={logo} alt="" width="50px"/>
+                    <img src={logo} alt="" width="45px"/>
                     </Navbar.Brand>
+
+                    <Nav className="ml-auto">
+                        <Nav.Link href="/quotes">Quotes</Nav.Link>
+                    </Nav>
+
+                    
                 </Container>
 
             </Navbar>

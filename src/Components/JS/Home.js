@@ -107,12 +107,8 @@ export default class Home extends React.Component {
                         Ycom_services: Ycom_servicesF
 
                     })
-
-                    console.log(pointerToThis);
                 }
-            )
-
-            
+            ) 
     }
 
 
@@ -125,15 +121,16 @@ export default class Home extends React.Component {
                 <Jumbotron>
                 </Jumbotron>
 
-                <Container>
+                <Container className="bgcoll">
                     <Row className="justify-content-center">
                         <h2>Performance By Sector</h2>
                     </Row>
 
                     <br />
+                    <br />
 
                     <Row className="justify-content-around">
-                        <Col s md="6" className="text-center">
+                        <Col s md="4">
                             <ul>
                                 <h4>3 Month Performance</h4>
                                 <li>Energy: {this.state.energy}</li>
@@ -146,7 +143,7 @@ export default class Home extends React.Component {
                             </ul>
                         </Col>
 
-                        <Col s md="6" className="text-center">
+                        <Col s md="4">
                             <ul>
                                 <h4>1 Year Performance</h4>
                                 <li>Energy: {this.state.Yenergy}</li>

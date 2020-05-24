@@ -1,6 +1,6 @@
 import React from 'react';
 import '../CSS/Stocks.css';
-import createPlotlyComponent from 'react-plotly.js/factory';
+// import createPlotlyComponent from 'react-plotly.js/factory';
 import NavigationBar from './NavigationBar';
 
 
@@ -13,26 +13,28 @@ export default class Stocks extends React.Component {
         {
             stockChartXValues: [],
             stockCartYValues: [],
-            stockSymbol: ''
+            price: '',
+            ticker: ''
         }
+        this.handleSubmit = this.handleSubmit.bind(this);
+
     }
 
     handleSubmit = e =>
     {
-        this.setState({ stockSymbol: this.textInput.current.value})
+        e.preventDefault();
+        this.setState({ ticker: this.textInput.current.value})
         this.fetchStock();
     };
 
-
-
-    fetchStock()
+    fetchStock = () =>
     {
-        let API_CALL = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${this.state.stockSymbol}&apikey=HC59HK11T8SB44OT`;
-        const pointerToThis = this;
-        let stockCartXValuesFunction = [];
-        let stockCartYValuesFunction = [];
+        // const pointerToThis = this;
+        // let stockCartXValuesFunction = [];
+        // let stockCartYValuesFunction = [];
+        // var priceFunction = '';
 
-        fetch(API_CALL)
+        fetch(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=SPY&apikey=HC59HK11T8SB44OT`)
             .then
             (
                 function(response)
@@ -45,38 +47,43 @@ export default class Stocks extends React.Component {
                 function(data)
                 {
                     console.log(data);
+                    // priceFunction = (data["Global Quote"]["05. price"])
 
-                    for(var key in data['Time Series (Daily)'])
-                    {
-                        stockCartXValuesFunction.push(key);
-                        stockCartYValuesFunction.push(data['Time Series (Daily)'][key]['1. open']);
-                    }
+                    // for(var key in data['Time Series (Daily)'])
+                    // {
+                    //     // stockCartXValuesFunction.push(key);
+                    //     // stockCartYValuesFunction.push(data['Time Series (Daily)'][key]['1. open']);
+                    // }
 
-                    pointerToThis.setState({
-                        stockChartXValues: stockCartXValuesFunction,
-                        stockCartYValues: stockCartYValuesFunction
-                    })
+                    // pointerToThis.setState({
+                    //     // stockChartXValues: stockCartXValuesFunction,
+                    //     // stockCartYValues: stockCartYValuesFunction
+                    //     price: priceFunction
+                    // })
                 }
             )
     }
 
     render()
     {
-        const Plotly = window.Plotly;
-        const Plot = createPlotlyComponent(Plotly);
+        // const Plotly = window.Plotly;
+        // const Plot = createPlotlyComponent(Plotly);
 
         return (
             <div>
                 <NavigationBar />
-                <h3>Ticker: {this.state.stockSymbol} </h3>
                 
-                <input type="text" ref={this.textInput}/>
-                <button onClick={this.handleSubmit}>Change Ticker</button>
+                <form onSubmit={this.handleSubmit}>
+                    <h3>Ticker: {this.state.ticker} </h3>
+                    <input type="text" ref={this.textInput}/>
+                    <input type="submit" value="Change Ticker" />
+                </form>
+                <p>{this.state.price}</p>
                 <br/>
                 <br/>
                 <br/>
 
-                <Plot
+                {/* <Plot
                     data=
                     {[
                         {
@@ -88,7 +95,7 @@ export default class Stocks extends React.Component {
                         },
                     ]}
                     layout={ {width: 800, height: 500 } }
-                />
+                /> */}
             </div>
         );
 
